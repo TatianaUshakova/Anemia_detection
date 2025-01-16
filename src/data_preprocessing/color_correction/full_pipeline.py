@@ -63,8 +63,9 @@ def run_color_correction_pipeline(folder_path, image_list=None, first_image_path
         A_transform = calculate_matrix_transform(image_path, first_image_colors)
         corrected_img = apply_color_correction(img, A_transform)
 
-        # Save the corrected image with a suffix
-        corrected_img.save(image_path.replace(".jpg", "_corrected.jpg"))
+        # Save the corrected image with the appropriate suffix and extension
+        base, ext = os.path.splitext(image_path)
+        corrected_img.save(f"{base}_corrected{ext}")
         plot_original_vs_corrected(img, corrected_img, close=True)
 
     print("\n✅ Color correction complete!")
