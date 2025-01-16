@@ -3,8 +3,9 @@
 This project performs automated color correction using deep learning and linear algebra techniques. It uses the OWL-ViT object detection model to identify color circles on a calibration card and applies a linear transformation for color adjustment.
 
 ## 📷 Example Visualizations
-- **Detected Circles on the Color Card**
-- ![**Original vs. Corrected Image Comparison**](original_and_corrected_image_demo.png)
+- **Detected Circles on the Color Card (to be uploaded)**
+- **Original vs. Corrected Image Comparison**
+![corrected img](original_and_corrected_image_demo.png)
 
 ## 📦 Project Structure
 The `color_correction` module is organized as follows:
