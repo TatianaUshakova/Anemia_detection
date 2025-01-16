@@ -30,7 +30,7 @@ color_correction/
 4. **Image Correction:** The matrix is applied to adjust the image colors.
 
 ## 📦 Installation
-Ensure you have Python installed. To install the required dependencies:
+Ensure you have Python installed. To install the required dependencies (requitements.txt is in the original Anemia_detection folder):
 ```bash
 pip install -r requirements.txt
 ```
