@@ -1,5 +1,7 @@
 # Anemia Detection using Deep Learning
 
+Warning: project now in the process of being upload to GitHub and doesnt contain all the necessary components to be fully function
+
 Anemia detection using deep learning techniques, designed for deployment in rural areas of India where anemia-related complications, especially among pregnant women, are common and access to medical help is limited. The project includes automated tools for:
 
 - Color correction from a color card
