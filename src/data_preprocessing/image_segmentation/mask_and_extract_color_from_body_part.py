@@ -60,6 +60,10 @@ def calculate_rgb_statistics(masked_image_array):
     Passed masked image (image_array)
     To Do: make skew and kurtosis optional?
     return saverage, std, skewness, and kurtosis 
+
+    The function is necessary as according to the literature the paleness of specific bodyparts 
+    (such as tongue, conjuctiva, palms, nails) assessed through mean color and these statistics 
+    is correlated to hemoglobin level and can be a prediction factor for anemia detection
     """
     # Identify non-black (non-masked) pixels
     non_black_mask = np.any(masked_image_array > 0, axis=-1)
@@ -104,7 +108,8 @@ def calculate_rgb_stats_for_df(df, img_folder_path, mask_folder_path, rotate=Tru
 
 def debug_existing_masked_images(df, img_folder_path, mask_folder_path, debug_limit=5, rotate=True, png=True):
     """
-    Debug and visualize N existing masked images.
+    visualize N first existing masked images for debagging purposes: 
+    sometimes pipeline doesnt work as expected and this helps catching this.
 
     Args:
     - df (pd.DataFrame): DataFrame containing image names in the 'Images' column.
