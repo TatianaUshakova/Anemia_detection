@@ -2,7 +2,7 @@
 
 This part of the project performs automated color correction using text to image detection pretrained model and linear algebra techniques. The OWL-ViT object detection model is used to identify color circles on a calibration card and once colors are detected, it applies a linear transformation for color adjustment. The adjuctment can be performed to trnsform red, blue and green colors from colorcard to any three preindicated colors.
 
-## 📷 Example Visualizations
+## Example Visualizations
 - **Detected Circles on the Color Card (to be uploaded)**
 - **Original vs. Corrected Image Comparison**
 ![corrected img](original_and_corrected_image_demo.png)
