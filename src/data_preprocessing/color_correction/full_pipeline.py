@@ -84,11 +84,11 @@ def run_color_correction_pipeline(folder_path, image_list=None, output_folder = 
                 plot_original_vs_corrected(img, corrected_img, close=True)
 
         except np.linalg.LinAlgError as e:
-            print(f"⚠️ Skipping {image_path} due to singular matrix error: {e}")
+            print(f"Skipping {image_path} due to singular matrix error: {e}")
         except Exception as e:
-            print(f"⚠️ Skipping {image_path} due to unexpected error: {e}")
+            print(f" Skipping {image_path} due to unexpected error: {e}")
     
-    print("\n✅ Color correction complete!")
+    print("\n Color correction complete!")
 
 # Example usage with command line input
 if __name__ == "__main__":
