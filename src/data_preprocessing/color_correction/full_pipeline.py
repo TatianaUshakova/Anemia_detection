@@ -3,11 +3,6 @@ import sys
 import pandas as pd
 import numpy as np
 
-#from data_preprocessing.color_correction import (
-#    load_model, image_preprocess, calculate_matrix_transform, 
-#    apply_color_correction, plot_original_vs_corrected
-#)
-
 from data_preprocessing.color_correction.model_utils import load_model, image_preprocess
 from data_preprocessing.color_correction.transformation import calculate_matrix_transform, apply_color_correction
 from data_preprocessing.color_correction.visualization import plot_original_vs_corrected
@@ -31,25 +26,7 @@ def run_color_correction_pipeline(folder_path, image_list=None, output_folder = 
             f for f in os.listdir(folder_path)
             if f.lower().endswith(('.jpg', '.jpeg', '.png'))
         ]
-    # # Handling different types of inputs
-    # elif isinstance(image_list, str):
-    #     if image_list.endswith(".csv"):
-    #         df = pd.read_csv(image_list)
-    #         image_paths = [os.path.join(folder_path, img) for img in df['image_name']]
-    #     elif image_list.endswith(".xlsx"):
-    #         df = pd.read_excel(image_list)
-    #         image_paths = [os.path.join(folder_path, img) for img in df['image_name']]
-    #     else:
-    #         # Single image path
-    #         image_paths = [os.path.join(folder_path, image_list)]
-    # elif isinstance(image_list, (list, np.ndarray)):
-    #     image_paths = [os.path.join(folder_path, img) for img in image_list]
-    # elif isinstance(image_list, (pd.DataFrame, pd.Series)):
-    #     image_paths = [os.path.join(folder_path, img) for img in image_list.iloc[:, 0].tolist()]
-    # else:
-    #     raise ValueError("Image list must be empty, a single path, a CSV, Excel, list, or DataFrame containing image paths.")
 
-    # Optional minimal correction mode based on the first image
 
     first_image_colors = None
     if first_image_path:
@@ -86,16 +63,20 @@ def run_color_correction_pipeline(folder_path, image_list=None, output_folder = 
         except np.linalg.LinAlgError as e:
             print(f"Skipping {image_path} due to singular matrix error: {e}")
         except Exception as e:
-            print(f" Skipping {image_path} due to unexpected error: {e}")
+            print(f"Skipping {image_path} due to unexpected error: {e}")
     
-    print("\n Color correction complete!")
+    print("\nColor correction complete!")
 
-# Example usage with command line input
+
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: python -m data_preprocessing.color_correction.full_pipeline <folder_path> [<image_list>]")
-        sys.exit(1)
+    '''Usage: 
+    python -m data_preprocessing.color_correction.full_pipeline <folder_path> [<image_list>]
+    to process specific images in the image_list
+    Or
+    python -m data_preprocessing.color_correction.full_pipeline <folder_path>
+    to process all the images in the folder
+    '''
 
     folder_path = sys.argv[1]
-    image_list = sys.argv[2] if len(sys.argv) > 2 else None
+    image_list = sys.argv[2:] if len(sys.argv) > 2 else None #process all the images if image_list is not specified
     run_color_correction_pipeline(folder_path, image_list, printing=False)
